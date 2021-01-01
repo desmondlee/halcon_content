@@ -9,7 +9,6 @@ categories : [
     "Development",
     "tips",
 ]
-draft: true
 
 ---
 
