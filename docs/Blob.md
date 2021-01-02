@@ -48,6 +48,8 @@ title: "Blob"
 
 - area_center
 
+  获取区域的中心点坐标和面积
+
 - dev_desplay
 
   展示指定的图像
@@ -56,4 +58,4 @@ title: "Blob"
 
 ## 备注
 
-1. 图像类型数组，下标从1开始，且只能通过算子(select_obj)一个个读取
+1. 图像类型数组，下标从1开始，且只能通过算子(如select_obj)读取
