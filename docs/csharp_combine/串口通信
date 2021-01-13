@@ -1,0 +1,24 @@
+# 串口通信
+
+
+
+1. 串口控件：```serialPort1```
+
+2. 打开/关闭：```this.serialPort1.Open();```,  ```this.serialPort1.Close();```
+
+3. 发送数据： ``` this.serialPort1.Write(this.txtSend.Text);```
+
+4. 支持中文：在窗体load方法中，``` this.serialPort1.Encoding = Encoding.Default;```
+
+5. 接收数据：
+
+   在控件的 DataReceived 事件中，
+
+   ```
+    int len = this.serialPort1.ReadBufferSize;
+    byte[] ByteData = new byte[len];
+    this.serialPort1.Read(ByteData, 0, len);
+    this.txtSend.Text = this.txtSend.Text + Encoding.Default.GetString(ByteData);
+   ```
+
+   > 因 DataReceived 用的是thread，所以为了能调用主线程的控件，需要在窗体load方法中，设置 	```CheckForIllegalCrossThreadCalls = false;```， 或使用以下代码：```   this.BeginInvoke(new MethodInvoker(delegate { this.txtSend.Text = this.txtSend.Text + Encoding.Default.GetString(ByteData); }));```
